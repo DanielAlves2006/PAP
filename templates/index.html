@@ -1,29 +1,105 @@
 {% include 'header.html' %}
-
 <link rel="stylesheet" href="{{ url_for('static', filename='css/slideshow.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/foto.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
 
-<div class="slideshow">
+<body>
+    <audio id="meuSom" src="{{ url_for('static', filename='audio/whatsapp-audio-2026-05-27-at-145333_VJeA0co8.mp3') }}"
+        preload="auto"></audio>
+</body>
+<br>
+<br>
+<br>
+<br>
 
-    <div class="slides fade">
-        <img src="{{ url_for('static', filename='img1.jpg') }}">
+<h1 class="rgb-text">BEM VINDO À OFICINA DO POMBO</h1>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="grid">
+
+    <div class="card">
+        <span class="stat">Levantamento em loja</span>
+        <p>Setúbal, Lisboa e Almada</p>
     </div>
 
-    <div class="slides fade">
-        <img src="{{ url_for('static', filename='img2.jpg') }}">
+    <div class="card">
+        <span class="stat">Entregue em 1-2 dias</span>
+        <p>Portugal Continental</p>
     </div>
 
-    <div class="slides fade">
-        <img src="{{ url_for('static', filename='img3.jpg') }}">
+    <div class="card">
+        <span class="stat">Devoluções Gratis</span>
+        <p>14 dias para devolver</p>
     </div>
 
-    <a class="prev" onclick="mudarSlide(-1)">&#10094;</a>
-    <a class="next" onclick="mudarSlide(1)">&#10095;</a>
+    <div class="card">
+        <span class="stat">Apoio ao Cliente</span>
+        <p>10:00-18:00</p>
+    </div>
 
 </div>
+<br>
+<br>
+<br>
+<div class="grid">
+    <div class="card">
+        <img src="https://led.dge.medu.pt/sites/default/files/2023-10/FT01_6.jpg" alt="Computador" class="foto" />
+        <h3>Computadores</h3>
+    </div>
 
-<script src="{{ url_for('static', filename='js/slideshow.js') }}"></script>
+    <div class="card">
+        <img src="https://lh5.googleusercontent.com/proxy/sUovxK1TYADmMzwQpUTPOiTQ5rWbkutRq9sK4TV_VpNnWSPGvjZ50kuSTSL_qjuD2mCVjbXcTvJ3sdOLEs07NgDr10yMbimFisWPJCtDk4aSdvSKLsrv8uwj0cBSEXyVuojuf9ltUgDleNJXr7ZiENtQdGiKaDo4gf-K0WXMMM2Azg"
+            alt="SmartPhones" class="foto" />
+        <h3>SmartPhones</h3>
+    </div>
 
-</body>
+    <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMJsIwnp2o3rtURcnxWQSi40ZiyYfNgbjBOQ&s"
+            alt="Televisões" class="foto" />
+        <h3>Televisões</h3>
+    </div>
 
-</html>
+    <div class="card">
+        <img src="https://wx.mlcdn.com.br/ponzi/production/portaldalu/50094.jpg" alt="Perifericos" class="foto" />
+        <h3>Perifericos</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://cdn.awsli.com.br/600x450/2740/2740976/produto/381833442/processador-intel-core-i7-8700-32ghz-max-turbo-460ghz-12mb-8-geracao-coffee-lake-mke8lh7wn4.jpg"
+            alt="Componentes" class="foto" />
+        <h3>Componentes</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://www.gigabyte.com/FileUpload/Global/KeyFeature/3869/innergigabyte/images/kv-img.png"
+            alt="Gaming" class="foto" />
+        <h3>Gaming</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://previews.123rf.com/images/kvsan/kvsan1809/kvsan180900084/108744785-open-computer-with-red-lighting-effects-and-water-cooled-cooling-system-on-white-background-3d.jpg"
+            alt="Reparações" class="foto" />
+        <h3>Reparações</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://thumb.pccomponentes.com/w-530-530/articles/1067/10676237/1132-mars-gaming-mcv4-torre-xxl-e-atx-cristal-templado-lateral-y-frontal-sin-marco-rosa.jpg"
+            alt="Montagens" class="foto" />
+        <h3>Montagens</h3>
+    </div>
+
+
+</div>
+<br>
+<br>
+<br>
+<script src="{{ url_for('static', filename='js/audio.js') }}"></script>
+{% include 'footer.html' %}

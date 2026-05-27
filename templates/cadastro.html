@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registar</title>
+    <link rel="stylesheet" href="/static/css/voltar.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+
+
+</head>
+
+<body>
+    <header>
+        <button onclick="history.back()">Voltar</button>
+    </header>
+
+    <div class="form-container">
+
+        <h2>Registar</h2>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash">
+            {% for msg in messages %}
+            <p>{{ msg }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <form action="/registro" method="POST">
+
+            <label>Nome:</label>
+            <input type="text" name="nome" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Senha:</label>
+            <input type="password" name="senha" required>
+
+            <label>Confirmar Senha:</label>
+            <input type="password" name="confirmar_senha" required>
+
+            <button type="submit">Entrar</button>
+
+        </form>
+
+
+    </div>
+
+
+</body>
+
+</html>

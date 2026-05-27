@@ -1,0 +1,7 @@
+a {
+    cursor: url('/static/imagens/tinkpro-1779888482251.png'), pointer;
+}
+
+* {
+    cursor: url('/static/imagens/tinkpro-1779888482251.png'), auto;
+}

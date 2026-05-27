@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/static/css/voltar.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+        <button onclick="history.back()">Voltar</button>
+    </header>
+
+    <div class="form-container">
+
+        <h2>Login</h2>
+
+        <form action="{{ url_for('autenticar.login') }}" method="POST">
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Senha:</label>
+            <input type="password" name="senha" required>
+
+            <button type="submit">Entrar</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 import sqlite3
 import hashlib 
 
-def _criar_hash_(password):
+def criar_hash_senha(password):
     return hashlib.sha256(password.encode()).hexdigest()
     
 # Criar ligação à base de dados
@@ -9,11 +9,22 @@ conn = sqlite3.connect('oficina_do_pombo.db')
 conn.execute("PRAGMA FOREIGN_KEYS = ON")
 cursor = conn.cursor()
 
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS utilizadores (
+    id_user INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    senha_hash TEXT NOT NULL,
+    tipo TEXT DEFAULT 'normal'
+);
+""")
+
 # Tabela administradores
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS administradores (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    nome TEXT NOT NULL, 
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL
 )
