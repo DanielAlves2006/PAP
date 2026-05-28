@@ -4,7 +4,6 @@ import hashlib
 def criar_hash_senha(password):
     return hashlib.sha256(password.encode()).hexdigest()
     
-# Criar ligação à base de dados
 conn = sqlite3.connect('oficina_do_pombo.db')
 conn.execute("PRAGMA FOREIGN_KEYS = ON")
 cursor = conn.cursor()
@@ -20,7 +19,7 @@ CREATE TABLE IF NOT EXISTS utilizadores (
 );
 """)
 
-# Tabela administradores
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS administradores (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,7 +29,7 @@ CREATE TABLE IF NOT EXISTS administradores (
 )
 """)
 
-# Tabela lojas
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS lojas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,7 +39,7 @@ CREATE TABLE IF NOT EXISTS lojas (
 )
 """)
 
-# Tabela categorias
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS categorias (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,7 +47,7 @@ CREATE TABLE IF NOT EXISTS categorias (
 )
 """)
 
-# Tabela produtos
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS produtos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -61,7 +60,7 @@ CREATE TABLE IF NOT EXISTS produtos (
 )
 """)
 
-# Tabela stock
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS stock (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,7 +72,7 @@ CREATE TABLE IF NOT EXISTS stock (
 )
 """)
 
-# Tabela clientes
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS clientes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -85,7 +84,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 )
 """)
 
-# Tabela encomendas
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS encomendas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -97,7 +96,7 @@ CREATE TABLE IF NOT EXISTS encomendas (
 )
 """)
 
-# Tabela encomenda_itens
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS encomenda_itens (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -110,10 +109,24 @@ CREATE TABLE IF NOT EXISTS encomenda_itens (
 )
 """)
 
-# Guardar alterações
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS reparacoes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    clientes_id INTEGER NOT NULL,
+    equipamento TEXT NOT NULL,
+    marca TEXT,
+    modelo TEXT,
+    problema TEXT NOT NULL,
+    data_reparacao TEXT NOT NULL,
+    hora_reparacao TEXT NOT NULL,
+    estado TEXT DEFAULT 'Pendente',
+    FOREIGN KEY (clientes_id) REFERENCES utilizadores(id_user)
+)
+""")
+
 conn.commit()
 
 print("Base de dados criada com sucesso!")
 
-# Fechar ligação
 conn.close()

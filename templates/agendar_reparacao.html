@@ -1,3 +1,38 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/email.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reparacao.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
 {% include 'header.html' %}
+<br>
+<br>
+<br>
+<br>
+<h4 class="rgb-text">Agende a sua Reparação</h4>
+<div class="grid2">
+    <form method="POST">
+        <label>Equipamento:</label>
+        <input type="text" name="equipamento" required>
+        <label>Marca:</label>
+        <input type="text" name="marca" required>
+        <label>Modelo:</label>
+        <input type="text" name="modelo" required>
+        <label>Descreva o problema:</label>
+        <textarea name="problema"></textarea>
+        <label>Data:</label>
+        <input type="date" name="data" required>
+        <label>Hora:</label>
+        <input type="time" name="hora" required>
+        <label>Confirme a sua reparação</label>
+        <button type="submit">
+            Agendar Reparação
+        </button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+
 {% include 'footer.html' %}
