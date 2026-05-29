@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+{% include 'header.html' %}
+<h4 class="titulo-admin">Painel do administrador</h4>
+<div class="admin-botoes">
+
+    <a href="/adicionar_produto" class="admin-btn">
+        Adicionar Produto
+    </a>
+
+    <a href="/gerir_stock" class="admin-btn">
+        Gerir Stock
+    </a>
+
+    <a href="/reparacao_admin" class="admin-btn">
+        Ver Reparações Agendadas
+    </a>
+
+    <a href="/encomenda_admin" class="admin-btn">
+        Ver Encomendas
+    </a>
+
+    <a href="/logout" class="admin-btn sair">
+        Terminar Sessão
+    </a>
+
+</div>
+
+<div class="admin-container">
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Stock</th>
+        </tr>
+
+        {% for produto in produtos %}
+
+        <tr>
+            <td>{{ produto[0] }}</td>
+            <td>{{ produto[1] }}</td>
+            <td>{{ produto[2] }}€</td>
+            <td>{{ produto[3] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% include 'footer.html' %}

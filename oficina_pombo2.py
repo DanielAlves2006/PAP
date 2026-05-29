@@ -21,16 +21,6 @@ CREATE TABLE IF NOT EXISTS utilizadores (
 
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS administradores (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL, 
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
-)
-""")
-
-
-cursor.execute("""
 CREATE TABLE IF NOT EXISTS lojas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,

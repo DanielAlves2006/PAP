@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/voltar_admin.css') }}">
+
+
+{% include 'header.html' %}
+<br>
+<br>
+<br>
+<div class="admin-form">
+
+    <h4 classe="rgb-text">Gerir Stock</h4>
+    <br>
+    <br>
+    <br>
+    <table>
+
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Ação</th>
+        </tr>
+
+        {% for produto in produtos %}
+
+        <tr>
+
+            <td>{{ produto[1] }}</td>
+
+            <td>{{ produto[2] }}</td>
+
+            <td>
+
+                <form method="POST">
+
+                    <input type="hidden" name="produto_id" value="{{ produto[0] }}">
+
+                    <input type="number" name="quantidade" required>
+
+                    <button type="submit">
+                        Atualizar
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% include 'footer.html' %}

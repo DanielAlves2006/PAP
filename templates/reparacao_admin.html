@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+{% include 'header.html' %}
+
+<div class="admin-form">
+
+    <h4 class="rgb-text">Reparações</h4>
+
+    <table>
+
+        <tr>
+            <th>Cliente</th>
+            <th>Equipamento</th>
+            <th>Marca</th>
+            <th>Problema</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Estado</th>
+        </tr>
+
+        {% for reparacao in reparacoes %}
+
+        <tr>
+
+            <td>{{ reparacao[0] }}</td>
+            <td>{{ reparacao[1] }}</td>
+            <td>{{ reparacao[2] }}</td>
+            <td>{{ reparacao[3] }}</td>
+            <td>{{ reparacao[4] }}</td>
+            <td>{{ reparacao[5] }}</td>
+            <td>{{ reparacao[6] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% include 'footer.html' %}

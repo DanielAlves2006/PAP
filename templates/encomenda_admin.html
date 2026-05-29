@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+
+<div class="admin-form">
+
+    <h1>Encomendas</h1>
+
+    <table>
+
+        <tr>
+            <th>Cliente</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Data</th>
+        </tr>
+
+        {% for encomenda in encomendas %}
+
+        <tr>
+
+            <td>{{ encomenda[0] }}</td>
+            <td>{{ encomenda[1] }}€</td>
+            <td>{{ encomenda[2] }}</td>
+            <td>{{ encomenda[3] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% include 'footer.html' %}

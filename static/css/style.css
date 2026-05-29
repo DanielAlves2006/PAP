@@ -160,3 +160,72 @@ section {
 
     margin: 0 auto;
 }
+
+.titulo-admin {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+.admin-botoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.admin-btn {
+    background: linear-gradient(90deg, #0f172a, #1e3a8a);
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.admin-btn:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+}
+
+.sair {
+    background: linear-gradient(90deg, #7f1d1d, #dc2626);
+}
+
+.sair:hover {
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+
+.admin-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: linear-gradient(90deg, #0f172a, #1e3a8a);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}

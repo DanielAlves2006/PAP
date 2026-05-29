@@ -31,10 +31,12 @@ def login():
         if user:
             session['user_id'] = user['id_user']
             session['nome'] = user['nome']
-            session['tipo'] = user['tipo']
-
-            return redirect(url_for('main.index'))
-
+            session['tipo'] = user['tipo']  
+            
+            if user['tipo'] == 'admin':
+                return redirect(url_for('admin.admin'))
+            else:
+                return redirect(url_for('main.index'))
         return render_template("login.html")
 
     return render_template("login.html")
