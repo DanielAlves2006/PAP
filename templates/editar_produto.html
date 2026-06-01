@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+{% include 'header.html' %}
+
+<br>
+<br>
+<br>
+<br>
+<div class="admin-form">
+
+    <h1>Editar Produto #{{ produto[0] }}</h1>
+
+    <form method="POST">
+
+        <label>Nome do Produto</label>
+        <input type="text" name="nome" value="{{ produto[1] }}" required>
+
+        <label>Descrição</label>
+        <textarea name="descricao" rows="4">{{ produto[2] }}</textarea>
+
+        <label>Preço</label>
+        <input type="number" step="0.01" name="preco" value="{{ produto[3] }}" required>
+
+        <label>Categoria</label>
+        <select name="categoria_id" class="form-select mb-3" required style="cursor: pointer;">
+            {% for cat in categorias %}
+            <option value="{{ cat[0] }}" {% if cat[0] == produto[4] %}selected{% endif %}>{{ cat[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Imagem (URL)</label>
+        <input type="text" name="imagem" value="{{ produto[5] }}">
+
+        <button type="submit">
+            Guardar Alterações
+        </button>
+
+        <br>
+        <a href="/gerir_stock" class="btn btn-secondary w-100" style="margin-top: 10px; border-radius: 5px; padding: 10px; font-weight: bold; text-decoration: none; text-align: center; display: block;">Cancelar</a>
+
+    </form>
+
+</div>
+
+{% include 'footer.html' %}

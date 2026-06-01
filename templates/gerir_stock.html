@@ -9,50 +9,116 @@
 <br>
 <br>
 <br>
-<div class="admin-form">
+<div class="admin-container" style="margin-top: 20px;">
 
-    <h4 classe="rgb-text">Gerir Stock</h4>
+    <h4 class="rgb-text">Gerir Stock</h4>
     <br>
-    <br>
-    <br>
-    <table>
+    
+    <div style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+        <a href="/adicionar_produto" class="btn btn-primary">Adicionar Novo Produto</a>
+        <button type="submit" form="delete-form" id="btn-eliminar-selecionados" class="btn btn-danger" disabled>Eliminar Selecionados</button>
+        <a href="/admin" class="btn btn-secondary">Voltar ao Painel</a>
+    </div>
 
-        <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Ação</th>
-        </tr>
+    <form id="delete-form" action="/eliminar_produtos" method="POST" onsubmit="return confirm('Tem a certeza que deseja eliminar os produtos selecionados?');" style="display: none;"></form>
 
-        {% for produto in produtos %}
+    <table class="table table-dark table-hover table-striped align-middle text-center" style="border-radius: 10px; overflow: hidden;">
 
-        <tr>
+        <thead>
+            <tr>
+                <th style="width: 50px;"><input type="checkbox" id="select-all" style="transform: scale(1.2); cursor: pointer;"></th>
+                <th style="width: 80px;">ID</th>
+                <th>Produto</th>
+                <th style="width: 120px;">Preço</th>
+                <th style="width: 150px;">Stock Atual</th>
+                <th style="width: 250px;">Atualizar Stock</th>
+                <th style="width: 150px;">Ações</th>
+            </tr>
+        </thead>
 
-            <td>{{ produto[1] }}</td>
-
-            <td>{{ produto[2] }}</td>
-
-            <td>
-
-                <form method="POST">
-
-                    <input type="hidden" name="produto_id" value="{{ produto[0] }}">
-
-                    <input type="number" name="quantidade" required>
-
-                    <button type="submit">
-                        Atualizar
-                    </button>
-
-                </form>
-
-            </td>
-
-        </tr>
-
-        {% endfor %}
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td><input type="checkbox" name="produto_ids" value="{{ produto[0] }}" class="product-checkbox" form="delete-form" style="transform: scale(1.2); cursor: pointer;"></td>
+                <td>{{ produto[0] }}</td>
+                <td class="text-start">
+                    <strong>{{ produto[1] }}</strong>
+                    {% if produto[4] %}
+                    <br>
+                    <span class="badge bg-secondary">{{ produto[4] }}</span>
+                    {% endif %}
+                </td>
+                <td>{{ produto[2] }}€</td>
+                <td>
+                    <span class="badge {% if (produto[3] if produto[3] is not none else 0) > 5 %}bg-success{% else %}bg-danger{% endif %}" style="font-size: 1rem;">
+                        {{ produto[3] if produto[3] is not none else 0 }}
+                    </span>
+                </td>
+                <td>
+                    <form method="POST" class="d-flex align-items-center justify-content-center gap-2" style="margin: 0;">
+                        <input type="hidden" name="produto_id" value="{{ produto[0] }}">
+                        <input type="number" name="quantidade" value="{{ produto[3] if produto[3] is not none else 0 }}" min="0" class="form-control form-control-sm" style="width: 80px; background-color: #2b2b2b; color: white; border: 1px solid #444;" required>
+                        <button type="submit" class="btn btn-sm btn-success">
+                            Atualizar
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <a href="/editar_produto/{{ produto[0] }}" class="btn btn-sm btn-primary" style="text-decoration: none;">Editar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
 
     </table>
 
 </div>
+<br>
+<br>
+<br>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const selectAllCheckbox = document.getElementById('select-all');
+    const productCheckboxes = document.querySelectorAll('.product-checkbox');
+    const deleteButton = document.getElementById('btn-eliminar-selecionados');
+
+    function updateDeleteButtonState() {
+        const checkedCount = document.querySelectorAll('.product-checkbox:checked').length;
+        deleteButton.disabled = (checkedCount === 0);
+        
+        if (checkedCount > 0) {
+            deleteButton.textContent = `Eliminar Selecionados (${checkedCount})`;
+        } else {
+            deleteButton.textContent = 'Eliminar Selecionados';
+        }
+
+        if (checkedCount === 0) {
+            selectAllCheckbox.checked = false;
+            selectAllCheckbox.indeterminate = false;
+        } else if (checkedCount === productCheckboxes.length) {
+            selectAllCheckbox.checked = true;
+            selectAllCheckbox.indeterminate = false;
+        } else {
+            selectAllCheckbox.checked = false;
+            selectAllCheckbox.indeterminate = true;
+        }
+    }
+
+    selectAllCheckbox.addEventListener('change', function() {
+        productCheckboxes.forEach(checkbox => {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+        updateDeleteButtonState();
+    });
+
+    productCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateDeleteButtonState);
+    });
+});
+</script>
+
 
 {% include 'footer.html' %}

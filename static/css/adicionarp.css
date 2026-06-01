@@ -1,0 +1,56 @@
+.admin-form {
+    background: linear-gradient(90deg, #0f172a, #1e3a8a);
+    padding: 40px;
+    border-radius: 15px;
+    width: 600px;
+    max-width: 90%;
+    margin: 40px auto;
+    text-align: left;
+    transition: 0.3s;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Remove arrows from number inputs for a cleaner look (especially for price) */
+.admin-form input[type=number]::-webkit-inner-spin-button, 
+.admin-form input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+.admin-form input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.admin-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}

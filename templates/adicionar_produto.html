@@ -1,10 +1,6 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
-
-
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adicionarp.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
 
 {% include 'header.html' %}
 
@@ -15,7 +11,7 @@
 <br>
 <div class="admin-form">
 
-    <h1>Adicionar Produto</h1>
+    <h4 class="rgb-text">Adicionar Produto</h4>
 
     <form method="POST">
 
@@ -28,8 +24,18 @@
         <label>Preço</label>
         <input type="number" step="0.01" name="preco" required>
 
+        <label>Categoria</label>
+        <select name="categoria_id" class="form-select mb-3" required style="cursor: pointer;">
+            {% for cat in categorias %}
+            <option value="{{ cat[0] }}">{{ cat[1] }}</option>
+            {% endfor %}
+        </select>
+
         <label>Imagem (URL)</label>
         <input type="text" name="imagem">
+
+        <label>Quantidade em Stock</label>
+        <input type="number" name="quantidade" value="0" min="0" required>
 
         <button type="submit">
             Adicionar Produto
