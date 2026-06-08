@@ -1,43 +1,73 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
 
+
 {% include 'header.html' %}
 
-<div class="admin-form">
+<h4 class="rgb-text">Gestão de Reparações</h4>
 
-    <h4 class="rgb-text">Reparações</h4>
+<table>
 
-    <table>
+    <tr>
+        <th>ID</th>
+        <th>Equipamento</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Problema</th>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Estado</th>
+        <th>Guardar</th>
+    </tr>
 
-        <tr>
-            <th>Cliente</th>
-            <th>Equipamento</th>
-            <th>Marca</th>
-            <th>Problema</th>
-            <th>Data</th>
-            <th>Hora</th>
-            <th>Estado</th>
-        </tr>
+    {% for reparacao in reparacoes %}
 
-        {% for reparacao in reparacoes %}
+    <tr>
 
-        <tr>
+        <td>{{ reparacao[0] }}</td>
+        <td>{{ reparacao[2] }}</td>
+        <td>{{ reparacao[3] }}</td>
+        <td>{{ reparacao[4] }}</td>
+        <td>{{ reparacao[5] }}</td>
+        <td>{{ reparacao[6] }}</td>
+        <td>{{ reparacao[7] }}</td>
 
-            <td>{{ reparacao[0] }}</td>
-            <td>{{ reparacao[1] }}</td>
-            <td>{{ reparacao[2] }}</td>
-            <td>{{ reparacao[3] }}</td>
-            <td>{{ reparacao[4] }}</td>
-            <td>{{ reparacao[5] }}</td>
-            <td>{{ reparacao[6] }}</td>
+        <td>
 
-        </tr>
+            <form action="/atualizar_reparacao/{{ reparacao[0] }}" method="POST">
 
-        {% endfor %}
+                <select name="estado">
 
-    </table>
+                    <option value="Pendente">
+                        Pendente
+                    </option>
 
-</div>
+                    <option value="Por Resolver">
+                        Por Resolver
+                    </option>
 
-{% include 'footer.html' %}
+                    <option value="Concluída">
+                        Concluída
+                    </option>
+
+                </select>
+        <td>
+            <button type="submit">Atualizar</button>
+        </td>
+
+        </form>
+        </td>
+
+
+
+
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% include 'footer.html'%}
