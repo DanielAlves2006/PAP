@@ -11,3 +11,29 @@
       transition: 0.3s;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
+
+  /* STOCK ACTIONS BUTTONS */
+  .stock-actions-container {
+      margin-bottom: 25px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+  }
+
+  .stock-actions-container .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .stock-actions-container .btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .stock-actions-container .btn:active:not(:disabled) {
+      transform: translateY(0);
+  }
