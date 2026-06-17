@@ -32,15 +32,17 @@
 
     {% for produto in produtos %}
 
-    <div class="card">
+    <a href="/comprar_produto/{{ produto[0] }}" style="text-decoration: none; color: inherit; display: block;">
+        <div class="card" style="cursor: pointer;">
 
-        <img src="{{ produto[4] }}" alt="{{ produto[1] }}">
-        <h3>{{ produto[1] }}</h3>
-        <p class="card-description">{{ produto[2] }}</p>
-        <span class="category-badge">{{ produto[5] }}</span>
-        <p class="price-tag">{{ produto[3] }}€</p>
+            <img src="{{ produto[4] }}" alt="{{ produto[1] }}">
+            <h3>{{ produto[1] }}</h3>
+            <p class="card-description">{{ produto[2] }}</p>
+            <span class="category-badge">{{ produto[5] }}</span>
+            <p class="price-tag">{{ produto[3] }}€</p>
 
-    </div>
+        </div>
+    </a>
     {% if loop.index is divisibleby 4 and not loop.last %}
 </div>
 <br>

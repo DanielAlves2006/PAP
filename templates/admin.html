@@ -15,6 +15,10 @@
         Gerir Stock
     </a>
 
+    <a href="/adicionar_loja" class="admin-btn">
+        Gerir Lojas
+    </a>
+
     <a href="/reparacao_admin" class="admin-btn">
         Ver Reparações Agendadas
     </a>
@@ -36,6 +40,7 @@
         <tr>
             <th>ID</th>
             <th>Produto</th>
+            <th>Loja</th>
             <th>Preço</th>
             <th>Stock</th>
         </tr>
@@ -45,8 +50,9 @@
         <tr>
             <td>{{ produto[0] }}</td>
             <td>{{ produto[1] }}</td>
-            <td>{{ produto[2] }}€</td>
-            <td>{{ produto[3] }}</td>
+            <td>{{ produto[2] if produto[2] else 'Sem Loja' }}</td>
+            <td>{{ produto[3] }}€</td>
+            <td>{{ produto[4] if produto[4] is not none else 0 }}</td>
         </tr>
 
         {% endfor %}

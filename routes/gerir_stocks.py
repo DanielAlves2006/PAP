@@ -13,18 +13,20 @@ def gerir_stocks():
 
     if request.method == 'POST':
         produto_id = int(request.form.get('produto_id'))
+        loja_id = int(request.form.get('loja_id'))
         quantidade = int(request.form.get('quantidade', 0))
 
-        cursor.execute("UPDATE stock SET quantidade = ? WHERE produto_id = ? AND loja_id = 1", (quantidade, produto_id))
+        cursor.execute("UPDATE stock SET quantidade = ? WHERE produto_id = ? AND loja_id = ?", (quantidade, produto_id, loja_id))
         if cursor.rowcount == 0:
-            cursor.execute("INSERT INTO stock (produto_id, loja_id, quantidade) VALUES (?, 1, ?)", (produto_id, quantidade))
+            cursor.execute("INSERT INTO stock (produto_id, loja_id, quantidade) VALUES (?, ?, ?)", (produto_id, loja_id, quantidade))
 
         conn.commit()
 
     cursor.execute("""
-        SELECT p.id, p.nome, p.preco, s.quantidade, c.nome AS categoria_nome
+        SELECT p.id, p.nome, p.preco, s.quantidade, c.nome AS categoria_nome, l.nome AS loja_nome, s.loja_id
         FROM produtos p
         LEFT JOIN stock s ON p.id = s.produto_id
+        LEFT JOIN lojas l ON s.loja_id = l.id
         LEFT JOIN categorias c ON p.categoria_id = c.id
     """)
     produtos = cursor.fetchall()

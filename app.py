@@ -14,6 +14,7 @@ from routes.adicionar_produtos import adicionar_produtos_route
 from routes.gerir_stocks import gerir_stocks_route
 from routes.reparacoes import reparacoes_route
 from routes.encomendas_admin import encomendas_admin_route
+from routes.lojas import lojas_route
 
 
 
@@ -34,6 +35,7 @@ app.register_blueprint(adicionar_produtos_route)
 app.register_blueprint(gerir_stocks_route)
 app.register_blueprint(reparacoes_route)
 app.register_blueprint(encomendas_admin_route)
+app.register_blueprint(lojas_route)
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587

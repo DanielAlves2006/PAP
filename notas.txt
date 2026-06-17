@@ -1,0 +1,11 @@
+Coisas por fazer:
+Colocar todo o css dentro de uma pasta a parte, os ficheiros que vão ter de ser restruturados são:
+adicionar_loja.html
+adicionar_produto.html
+comprar_produto.html
+editar_produto.html
+gerir_stock.html
+reparacao_admin.html
+
+Verificar tudo que o antigravity fez e refazer por mão humana para tentar perceber o que ele fez.
+E rever se falta alguma coisa para completar o projeto de PAP

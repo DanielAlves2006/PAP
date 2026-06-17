@@ -35,29 +35,15 @@
         <td>{{ reparacao[7] }}</td>
 
         <td>
-
-            <form action="/atualizar_reparacao/{{ reparacao[0] }}" method="POST">
-
-                <select name="estado">
-
-                    <option value="Pendente">
-                        Pendente
-                    </option>
-
-                    <option value="Por Resolver">
-                        Por Resolver
-                    </option>
-
-                    <option value="Concluída">
-                        Concluída
-                    </option>
-
-                </select>
-        <td>
-            <button type="submit">Atualizar</button>
+            <form action="/atualizar_reparacao/{{ reparacao[0] }}" method="POST" id="form-reparacao-{{ reparacao[0] }}" style="display: none;"></form>
+            <select name="estado" form="form-reparacao-{{ reparacao[0] }}" class="form-select form-select-sm bg-dark text-white border-secondary" style="width: 140px; cursor: pointer; display: inline-block;">
+                <option value="Pendente" {% if reparacao[8] == 'Pendente' %}selected{% endif %}>Pendente</option>
+                <option value="Por Resolver" {% if reparacao[8] == 'Por Resolver' %}selected{% endif %}>Por Resolver</option>
+                <option value="Concluída" {% if reparacao[8] == 'Concluída' %}selected{% endif %}>Concluída</option>
+            </select>
         </td>
-
-        </form>
+        <td>
+            <button type="submit" form="form-reparacao-{{ reparacao[0] }}" class="btn-premium-success" style="padding: 5px 12px; font-size: 0.875rem; font-weight: bold; transition: all 0.2s;">Atualizar</button>
         </td>
 
 

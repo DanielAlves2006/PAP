@@ -17,6 +17,7 @@ def adicionar_produtos():
         preco = float(request.form.get('preco'))
         imagem = request.form.get('imagem')
         categoria_id = int(request.form.get('categoria_id'))
+        loja_id = int(request.form.get('loja_id'))
         quantidade = int(request.form.get('quantidade', 0))
 
         cursor.execute("""
@@ -25,19 +26,21 @@ def adicionar_produtos():
         """, (nome, descricao, preco, categoria_id, imagem))
         produto_id = cursor.lastrowid
 
-        # Insert initial stock entry for default store (loja_id = 1)
+        
         cursor.execute("""
             INSERT INTO stock (produto_id, loja_id, quantidade)
             VALUES (?, ?, ?)
-        """, (produto_id, 1, quantidade))
+        """, (produto_id, loja_id, quantidade))
 
         conn.commit()
         conn.close()
         return redirect('/gerir_stock')
 
-    # GET: fetch categories for form select dropdown
+    
     cursor.execute("SELECT id, nome FROM categorias")
     categorias = cursor.fetchall()
+    cursor.execute("SELECT id, nome FROM lojas")
+    lojas = cursor.fetchall()
     conn.close()
 
-    return render_template('adicionar_produto.html', categorias=categorias)
+    return render_template('adicionar_produto.html', categorias=categorias, lojas=lojas)

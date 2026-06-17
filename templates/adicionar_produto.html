@@ -25,9 +25,16 @@
         <input type="number" step="0.01" name="preco" required>
 
         <label>Categoria</label>
-        <select name="categoria_id" class="form-select mb-3" required style="cursor: pointer;">
+        <select name="categoria_id" class="form-select mb-3" required style="cursor: pointer; color: #333; background-color: #fff;">
             {% for cat in categorias %}
             <option value="{{ cat[0] }}">{{ cat[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Loja para Stock Inicial</label>
+        <select name="loja_id" class="form-select mb-3" required style="cursor: pointer; color: #333; background-color: #fff;">
+            {% for loja in lojas %}
+            <option value="{{ loja[0] }}">{{ loja[1] }}</option>
             {% endfor %}
         </select>
 

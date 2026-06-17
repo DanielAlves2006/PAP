@@ -16,12 +16,14 @@ def admin():
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT produtos.id,
-           produtos.nome,
-           produtos.preco,
-           stock.quantidade
-    FROM produtos
-    LEFT JOIN stock ON produtos.id = stock.produto_id
+    SELECT p.id,
+           p.nome,
+           l.nome AS loja_nome,
+           p.preco,
+           s.quantidade
+    FROM produtos p
+    LEFT JOIN stock s ON p.id = s.produto_id
+    LEFT JOIN lojas l ON s.loja_id = l.id
     """)
 
     produtos = cursor.fetchall()

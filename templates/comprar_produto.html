@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adicionarp.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/voltar_admin.css') }}">
+
+{% include 'header.html' %}
+
+<br>
+<br>
+<br>
+<div class="admin-form" style="width: 500px;">
+
+    <h2 style="color: white; font-family: 'Rajdhani', sans-serif; text-align: center; margin-bottom: 20px;">Detalhes da Compra</h2>
+    
+    <div style="text-align: center; margin-bottom: 25px;">
+        <img src="{{ produto[4] }}" alt="{{ produto[1] }}" style="width: 150px; height: 150px; object-fit: contain; border-radius: 10px; background-color: rgba(255,255,255,0.05); padding: 10px; margin-bottom: 15px;">
+        <h3 style="color: white; font-size: 1.5rem; margin-bottom: 5px;">{{ produto[1] }}</h3>
+        <span class="badge bg-secondary" style="font-size: 0.9rem;">{{ produto[5] }}</span>
+    </div>
+
+    <form method="POST">
+        <label style="color: #bbb; font-weight: normal;">Descrição</label>
+        <p style="text-align: left; color: white; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; font-size: 1rem; border: 1px solid rgba(255,255,255,0.05);">
+            {{ produto[2] if produto[2] else 'Sem descrição disponível.' }}
+        </p>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0; background: rgba(0,255,0,0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(0,255,0,0.2);">
+            <span style="font-size: 1.1rem; font-weight: bold; color: white;">Preço Total:</span>
+            <span style="font-size: 1.6rem; font-weight: bold; color: #00ff00;">{{ produto[3] }}€</span>
+        </div>
+
+        <label style="color: white; font-weight: bold;">Escolha o Método de Pagamento (Simulado)</label>
+        <select name="metodo_pagamento" class="form-select mb-4" required style="cursor: pointer; padding: 10px; font-size: 1rem; border-radius: 6px; color: #333; background-color: #fff;">
+            <option value="MB Way">MB Way</option>
+            <option value="Multibanco">Multibanco</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+        </select>
+
+        <button type="submit" class="btn-premium-success" style="width: 100%; border: none; font-size: 1.1rem; padding: 12px; margin-top: 10px; box-shadow: 0 4px 10px rgba(16,185,129,0.3);">
+            Confirmar Pagamento Simulado
+        </button>
+        
+        <a href="/produto" class="btn-premium" style="width: 100%; text-align: center; margin-top: 15px;">Cancelar</a>
+    </form>
+
+</div>
+
+<br>
+<br>
+<br>
+{% include 'footer.html' %}
